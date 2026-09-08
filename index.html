@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#741d38">
+<title>Kalai & Agila — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="no-scroll">
+<div class="petal-layer" id="petals"></div>
+<div class="heart-layer" id="hearts"></div>
+
+<!-- 1. CURTAIN OPENING -->
+<section class="opening" id="opening" aria-label="Open wedding invitation">
+  <button class="front-cover" id="frontCover" aria-label="Tap to open the wedding invitation">
+    <span class="cover-tap">♡ Tap to Open</span>
+  </button>
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
+    <div class="curtain-center-ornament">✦</div>
+  </div>
+</section>
+
+<main id="mainContent" class="site-main" aria-hidden="true">
+
+  <!-- 2. STARTING IMAGE -->
+  <section class="image-page starting-page" aria-label="Welcome">
+    <img src="images/starting-image-crop.png" alt="Kalai and Agila wedding welcome">
+  </section>
+
+  <!-- 3. COUNTDOWN -->
+  <section class="section countdown-section">
+    <p class="eyebrow">COUNTING DOWN TO OUR SPECIAL DAY</p>
+    <h2>Until our forever begins</h2>
+    <div class="countdown" id="countdown">
+      <div class="time-box"><strong id="days">00</strong><span>Days</span></div>
+      <div class="time-box"><strong id="hours">00</strong><span>Hours</span></div>
+      <div class="time-box"><strong id="minutes">00</strong><span>Minutes</span></div>
+      <div class="time-box"><strong id="seconds">00</strong><span>Seconds</span></div>
+    </div>
+    <p class="countdown-date">Reception · 12 September 2026 · 6:30 PM</p>
+  </section>
+
+  <!-- 4. TINY INVITATION -->
+  <section class="section little-glimpse" id="littleGlimpse">
+    <p class="eyebrow">A LITTLE GLIMPSE</p>
+    <h2>Our Invitation</h2>
+    <p class="glimpse-copy">Tap the invitation to open it.</p>
+    <button class="glimpse-card" id="glimpseCard" aria-label="Open invitation">
+      <span class="glimpse-shadow"></span>
+      <span class="glimpse-page glimpse-back"></span>
+      <span class="glimpse-page glimpse-front"><img src="invitations/front-cover.jpg" alt="Wedding invitation front"></span>
+      <span class="glimpse-open">TAP TO OPEN</span>
+    </button>
+    <div class="glimpse-reveal" id="glimpseReveal" aria-hidden="true">
+      <div class="glimpse-backdrop" data-close-glimpse></div>
+      <div class="glimpse-modal-card">
+        <button class="glimpse-close" id="glimpseClose" aria-label="Close invitation">×</button>
+        <img src="invitations/inside-invitation.jpg" alt="Inside wedding invitation">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DETAILS -->
+  <section class="section details-section">
+    <p class="eyebrow">THE CELEBRATION</p>
+    <h2>Wedding Details</h2>
+    <div class="details-cards">
+      <article class="detail-card">
+        <span class="detail-icon">♡</span>
+        <p class="detail-label">RECEPTION</p>
+        <h3>Saturday · 12 September 2026</h3>
+        <strong>6:30 PM onwards</strong>
+        <p>Sri Saibaba Swamigal<br>Thirumana Mandapam</p>
+        <a class="calendar-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Kalai%20%26%20Agila%20%7C%20Reception&dates=20260912T130000Z%2F20260912T153000Z&details=Reception%20for%20Kalai%20%26%20Agila.&location=Sri%20Saibaba%20Swamigal%20Thirumana%20Mandapam%2C%2042%20Bharathi%20St%2C%20T.V.%20Nagar%2C%20Puducherry%20605003" target="_blank" rel="noopener">📅 Add Reception Reminder</a>
+      </article>
+      <article class="detail-card featured">
+        <span class="detail-icon">✦</span>
+        <p class="detail-label">MUHURTHAM</p>
+        <h3>Sunday · 13 September 2026</h3>
+        <strong>7:30 AM – 9:00 AM</strong>
+        <p>Sri Saibaba Swamigal<br>Thirumana Mandapam</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6. MEMORIES -->
+  <section class="section memories-section">
+    <p class="eyebrow">OUR SWEET MEMORIES</p>
+    <h2>Memories <span>♡</span></h2>
+    <p class="memory-intro">A few moments from our journey, shared with love.</p>
+    <div class="memory-carousel" id="memoryCarousel" aria-label="Wedding memories carousel">
+      <button class="memory-arrow memory-prev" id="memoryPrev" type="button" aria-label="Previous memory">‹</button>
+      <div class="memory-stage" id="memoryStage">
+        <div class="memory-track" id="memoryTrack"></div>
+      </div>
+      <button class="memory-arrow memory-next" id="memoryNext" type="button" aria-label="Next memory">›</button>
+      <p class="memory-counter" id="memoryCounter" aria-live="polite">01 / 12</p>
+    </div>
+  </section>
+
+  <!-- 7. VENUE / GOOGLE MAP -->
+  <section class="venue-section">
+    <div class="venue-copy">
+      <p class="eyebrow light">THE VENUE</p>
+      <h2>Sri Saibaba Swamigal<br>Thirumana Mandapam</h2>
+      <p class="venue-address">42, Bharathi St, T.V. Nagar,<br>Puducherry – 605003</p>
+      <div class="venue-photo-card">
+        <img src="images/mandapam-front.png" alt="Front view of Sri Saibaba Swamigal Thirumana Mandapam">
+        <span>Our celebration venue</span>
+      </div>
+      <a class="map-btn" href="https://maps.app.goo.gl/aLye7m4GGsHs9hiq9" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+    </div>
+    <div class="venue-map-wrap">
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.4581370605706!2d79.82591547357057!3d11.942749936602185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1106aefa5d5257b5%3A0x7bef54bd80dd1a57!2sSri%20Saibaba%20Swamigal%20Thirumana%20Mandapam!5e0!3m2!1sen!2sin!4v1788810242991!5m2!1sen!2sin" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Sri Saibaba Swamigal Thirumana Mandapam map"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SEND BLESSINGS -->
+  <section class="section blessings-section">
+    <div class="blessing-ornament">❧</div>
+    <p class="eyebrow">A NOTE FROM OUR HEARTS</p>
+    <h2>Send Your Blessings</h2>
+    <p class="blessing-quote">Your presence is a gift,<br><strong>your blessings are a treasure. ❤️</strong></p>
+    <button class="wish-open-btn" id="wishOpenBtn">💌 Send Your Blessings</button>
+    <div class="wish-panel" id="wishPanel" hidden>
+      <form id="wishForm">
+        <label>Name<input id="wishName" name="name" type="text" maxlength="80" placeholder="Your name" required></label>
+        <label>Your wishes<textarea id="wishMessage" name="message" maxlength="500" rows="5" placeholder="Write your blessings for Kalai & Agila…" required></textarea></label>
+        <button type="submit">💌 Send Wishes</button>
+        <p class="wish-status" id="wishStatus">Your message will be private to the couple.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 9. ENDING IMAGE -->
+  <section class="image-page ending-page" aria-label="Thank you">
+    <img src="images/ending-image-crop.png" alt="Thank you for being part of our story">
+  </section>
+</main>
+
+<button class="music-btn" id="musicBtn" aria-label="Turn music on or off">♫</button>
+<audio id="bgMusic" loop preload="auto"><source src="music/wedding-song.mpeg" type="audio/mpeg"></audio>
+<script src="script.js"></script>
+</body>
+</html>
